@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:29:19 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 02:23:25 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:14:23 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include <stdio.h>
 
 int		main(void) {
-//	char	buff[0xF000];
+	char	buff[0xF000];
 
-	ft_printf("olol %10.010x !\n", 42);
+	ft_printf("olol %10.5i !\n", 42);
+	printf("olol %10.5i !\n", 42);
+	ft_printf("olol %.1s !\n", "ABCDEFGH");
+	printf("olol %.5s !\n", "ABCDEFGH");
 	/*ft_concat(buff, (unsigned long long)10, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
 	ft_concat(buff, 'c', 5, -30, 0);
@@ -24,8 +27,8 @@ int		main(void) {
 	ft_concat(buff, (unsigned long long)-42, -5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
 	ft_concat(buff, (unsigned long long)-42, -5, 30, F_DECIMAL | F_32BIT | F_SIGNED | F_ZERO | F_PLUS);
-	printf("%s\n", buff);
-	ft_concat(buff, (unsigned long long)0, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
+	printf("%s\n", buff);*/
+	/*ft_concat(buff, (unsigned long long)0, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
 	ft_concat(buff, (unsigned long long)56958458, 50, NOALIGN, F_HEXA | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
@@ -55,4 +58,5 @@ int		main(void) {
 	end = clock();
 	printf("%ld\n%ld\n", mid - big, end - mid);
 	return (0);*/
+	(void)buff;
 }

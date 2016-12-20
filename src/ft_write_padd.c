@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 21:13:00 by alelievr          #+#    #+#             */
-/*   Updated: 2016/05/24 22:41:17 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:07:58 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static char		*ft_write_padding_prefix_integer(char **buff, size_t *len,
 		tmp = ft_add_integer_prefix(*buff, flag);
 		*buff += tmp;
 	}
-	if (padd != NOPADD && padd < 0 && *len < (size_t)-padd)
+	if (padd != NOPADD)
 	{
-		ft_memset(*buff, (flag & F_ZERO) ? '0' : ' ', -padd - *len);
+		ft_memset(*buff, (flag & F_ZERO) ? '0' : ' ', padd - *len);
 		pa = *buff;
-		*buff += -padd - 1;
-		*len += -padd - *len;
+		*buff += padd - 1;
+		*len += padd - *len;
 	}
 	else
 		*buff += *len - 1;

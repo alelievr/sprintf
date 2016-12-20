@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 18:41:31 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 02:23:06 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:28:14 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ static int	printf_wrapper(const char *format, va_list *args, char *buff)
 		if (*format == '%')
 		{
 			type = get_arg_flags(&format, &padd, &align, &flags, args);
-			printf("type = %i\n", type);
-			//buff += ft_concat(buff, GET_NEXT_ARG(args, type), padd, align, flags);
 			GET_NEXT_ARG(args, type);
 		}
 		else
 			*buff++ = *format++;
 	}
+	*buff++ = 0;
 	return buff - b;
 }
 

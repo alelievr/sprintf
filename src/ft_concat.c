@@ -6,11 +6,12 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:35:36 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/19 18:44:31 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:27:48 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sprintf.h"
+#include <stdio.h>
 
 size_t		ft_concat_align(char *buff, char *tmpbuff, size_t len,
 		ARG_II flag)
@@ -72,8 +73,8 @@ size_t		ft_concat(char *buff, char *str, int padd,
 	if (padd != NOPADD && padd < 0 && !(flag & F_NOERROR))
 		ft_exit("invalid negative precision for string !\n");
 	len = ft_strlen(str);
-	ft_strlcpy(buff, str, (padd != NOPADD && len > (size_t)padd)
-			? padd + 1 : len);
+	len = (padd != NOPADD && len > (size_t)padd) ? padd + 1 : len;
+	ft_strlcpy(buff, str, len);
 	return (ft_concat_align(buff, buff, len, align, flag));
 }
 
