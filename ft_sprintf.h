@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:28:54 by alelievr          #+#    #+#             */
-/*   Updated: 2016/05/24 22:12:06 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 02:13:28 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "libft.h"
 # undef F_ZERO
 
@@ -22,6 +23,8 @@
 # define NOALIGN		(int)(INT_MIN)
 # define MAXALIGN		1024
 # define MAXPADD		1024
+
+# define ALLOWED_FLAGS	"0123456789-+.%*' #lhjz"
 
 # define F_08BIT		1 << 0
 # define F_16BIT		1 << 1
@@ -61,6 +64,15 @@
 # define FT_WRITE_VAL_PADD(b, v, p, f) _Generic((v), FTWVP1__(b, v, p, f)
 # define ARG_II int align, int
 
+#define	TYPEIFY(type, data) 
+#define T(x, y, z) ((strstr(x, tc) != NULL) ? (y) : (z))
+#define P(v, x, y) ((type == v) ? (x) : (y))
+//#define CHAR_TO_TRUE_TYPE_CAST(x, y) (T("c", (char)(x), T("diouxXDOUC", (unsigned long long)(x), T("s", (char *)(x), T("S", (wchar_t *)(x), T("p", (void *)(x), (x)))))))
+#define CHAR_TO_TRUE_TYPE_CAST(x) (P(T_CHAR, DO((char)(x)), P(T_INTEGER, DO((unsigned long long int)(x)), P(T_POINTER, DO((unsigned long long int)(x)), P(T_WSTRING, DO((wchar_t *)(unsigned long long int)(x)), P(T_LONG, DO((unsigned long long int)(x)), P(T_WCHAR, DO((wchar_t)(x)), DO((x)))))))))
+
+#define CHAR_TO_TYPE(tc) (T("c", T_CHAR, T("diouxX", T_INTEGER, T("DOU", T_LONG, T("p", T_POINTER, T("s", T_STRING, T("S", T_WSTRING, T("C", T_WCHAR, -1))))))))
+#define GET_NEXT_ARG(ap, type) CHAR_TO_TRUE_TYPE_CAST(get_next_arg(ap, type))
+
 enum			e_tpye
 {
 	T_CHAR,
@@ -70,7 +82,8 @@ enum			e_tpye
 	T_LONGLONG,
 	T_STRING,
 	T_WCHAR,
-	T_WSTRING
+	T_WSTRING,
+	T_POINTER,
 };
 
 typedef struct	s_type
@@ -110,5 +123,15 @@ size_t			ft_concat(char *buff, wchar_t *wchrs, int padd, int align,
 		int flag) __attribute__((overloadable));
 size_t			ft_concat(char *buff, double d, int padd, int align,
 		int flag) __attribute__((overloadable));
+
+/*
+**	Flag parsing and printf implementations:
+*/
+int				ft_printf(const char *format, ...);
+int				ft_sprintf(char *buff, const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
+
+int				get_arg_flags(const char **fmt, int *padd, int *align, int *flags, va_list *ap);
+unsigned long long int	get_next_arg(va_list *ap, int type);
 
 #endif

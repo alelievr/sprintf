@@ -6,7 +6,7 @@
 #    By: alelievr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/07/15 15:13:38 by alelievr          #+#    #+#              #
-#    Updated: 2016/03/07 01:34:27 by alelievr         ###   ########.fr        #
+#    Updated: 2016/12/20 01:18:50 by alelievr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRC			=	main.c					\
 				ft_write_padd.c			\
 				ft_write_padd_utils.c	\
 				ft_wchar.c				\
+				ft_args.c				\
+				ft_sprintf.c			\
 
 #	Objects
 OBJDIR		=	obj
@@ -46,7 +48,7 @@ LDLIBS		=
 NAME		=	a.out
 
 #	Compiler
-CFLAGS		=	-Werror -Wextra -Wall #-Weverything -pedantic
+CFLAGS		=	-Werror -Wextra -Wall# -Weverything -pedantic
 CPROTECTION	=	-z execstack -fno-stack-protector
 
 DEBUGFLAGS1	=	-ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -O0
@@ -155,7 +157,7 @@ ifeq "$(strip $(LIBFT))" "2"
 ifneq ($(wildcard ./libft),)
 	LIBDIRS += "libft"
 	LDLIBS += "-lft"
-	INCDIRS += "libft"
+	INCDIRS += "libft/include"
 endif
 endif
 

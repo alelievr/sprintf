@@ -6,16 +6,20 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:29:19 by alelievr          #+#    #+#             */
-/*   Updated: 2016/08/30 22:49:14 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 02:23:25 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sprintf.h"
+#include <stdio.h>
 
 int		main(void) {
-	char	buff[0xF000];
+//	char	buff[0xF000];
 
-	ft_concat(buff, (unsigned long long)10, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
+	ft_printf("olol %10.010x !\n", 42);
+	/*ft_concat(buff, (unsigned long long)10, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
+	printf("%s\n", buff);
+	ft_concat(buff, 'c', 5, -30, 0);
 	printf("%s\n", buff);
 	ft_concat(buff, (unsigned long long)-42, -5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
@@ -32,17 +36,23 @@ int		main(void) {
 	ft_concat(buff, "yolol !", 3, 10, 0);
 	printf("%s\n", buff);
 	ft_concat(buff, (wchar_t *)L"AAπ |こんにちは|", 3, NOALIGN, 0);
-	printf("%s\n", buff);
+	printf("%s\n", buff);*/
 /*
 	clock_t	big, mid, end;
 	big = clock();
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 100000; i++)
+	{
 		ft_concat(buff, (unsigned long long)0x42, -6, 20, F_HEXA | F_ZERO | F_PREFIX | F_32BIT);
+		ft_concat(buff, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 20, 20, 0);
+	}
 	printf("here\n");
 	mid = clock();
-	for (int i = 0; i < 10000; i++)
-		ft_sprintf(buff, "%i", 0x42);
+	for (int i = 0; i < 100000; i++)
+	{
+		sprintf(buff, "%i", 0x42);
+		sprintf(buff, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	}
 	end = clock();
-	printf("%ld\n%ld\n", mid - big, end - mid);*/
-	return (0);
+	printf("%ld\n%ld\n", mid - big, end - mid);
+	return (0);*/
 }
