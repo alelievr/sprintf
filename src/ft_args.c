@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 19:41:37 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 16:34:05 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 22:45:31 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #define O(x, y, z) ((**fmt == x) ? (y) : (z))
 #define FLAG_HAS(flag, v) (flag & (v))
-#define	CHAR_FLAG_TO_VAL(flag) (O('0', F_ZERO, O('-', F_NEGATIVE, O('+', F_PLUS, O(' ', F_SPACE, O('#', F_PREFIX, O('\'', F_SEPARATOR, 0)))))))
+#define H_FLAG(flag) ((FLAG_HAS(flag, F_16BIT)) ? F_08BIT : F_16BIT)
+#define L_FLAG(flag) ((FLAG_HAS(flag, F_48BIT)) ? F_64BIT : F_48BIT)
+#define	CHAR_FLAG_TO_VAL(flag) (O('0', F_ZERO, O('-', F_NEGATIVE, O('+', F_PLUS, O(' ', F_SPACE, O('#', F_PREFIX, O('\'', F_SEPARATOR, O('h', H_FLAG(flag), O('l', L_FLAG(flag), 0)))))))))
 
 #define SIZEOF_TYPE(t) (P(T_CHAR, sizeof(char), P(T_INTEGER, sizeof(int), P(T_LONG, sizeof(long), P(T_POINTER, sizeof(void *), sizeof(char *))))))
 
@@ -38,6 +40,7 @@ static void	init_additional_flags(void)
 	g_additional_flags['p'] = F_HEXA | F_LOWERCASE | F_64BIT;
 }
 
+#include <stdio.h>
 int			get_arg_flags(const char **fmt, int *padd, int *align, int *flags, va_list *ap)
 {
 	INIT(int, ret, 0);

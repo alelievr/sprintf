@@ -6,7 +6,7 @@
 #    By: alelievr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/07/15 15:13:38 by alelievr          #+#    #+#              #
-#    Updated: 2016/12/20 16:18:10 by alelievr         ###   ########.fr        #
+#    Updated: 2016/12/20 22:41:59 by alelievr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ LDLIBS		=
 NAME		=	a.out
 
 #	Compiler
-CFLAGS		=	-Werror -Wextra -Wall# -Weverything -pedantic
+CFLAGS		=	-Wextra -Wall# -Weverything -pedantic
 CPROTECTION	=	-z execstack -fno-stack-protector
 
 DEBUGFLAGS1	=	-ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -O0

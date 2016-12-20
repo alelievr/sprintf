@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:29:19 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 16:14:23 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/20 22:41:51 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		main(void) {
 	printf("olol %10.5i !\n", 42);
 	ft_printf("olol %.1s !\n", "ABCDEFGH");
 	printf("olol %.5s !\n", "ABCDEFGH");
+	ft_printf("olol %hhx !\n", 4200);
+	printf("olol %hhx !\n", 4200);
 	/*ft_concat(buff, (unsigned long long)10, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);
 	ft_concat(buff, 'c', 5, -30, 0);
