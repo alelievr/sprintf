@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 21:13:00 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 22:43:13 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/21 20:41:39 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char		*ft_write_padding_prefix_integer(char **buff, size_t *len,
 		tmp = ft_add_integer_prefix(*buff, flag);
 		*buff += tmp;
 	}
-	if (padd != NOPADD)
+	if (padd != NOPADD && *len < (size_t)padd)
 	{
 		ft_memset(*buff, (flag & F_ZERO) ? '0' : ' ', padd - *len);
 		pa = *buff;
@@ -76,13 +76,16 @@ static size_t	ft_write_signed(char *buff, long long int val, int padd,
 	return (len);
 }
 
+#include <stdio.h>
 static size_t	ft_write_unsigned(char *buff, unsigned long long val,
 		int padd, const int flag)
 {
 	size_t						len;
 	const unsigned long long	diviser = GET_UNSIGNED_BASE_NUMBER(flag);
 
+	printf("val = %llu\n", val);
 	len = ft_uintlen_base(val, flag);
+	printf("len = %lu\n", len);
 	(void)ft_write_padding_prefix_integer(&buff, &len, padd, flag | F_POSITIVE);
 	*buff-- = ft_get_base_char(val % diviser, flag);
 	while (val /= diviser)
@@ -102,12 +105,12 @@ size_t			ft_write_val_padd_ulli(char *tmpbuff,
 		CHOOSE_SIGNED(tmpbuff, (char)val, padd, flag);
 	if (flag & F_16BIT)
 		CHOOSE_SIGNED(tmpbuff, (short)val, padd, flag);
-	if (flag & F_32BIT)
-		CHOOSE_SIGNED(tmpbuff, (int)val, padd, flag);
 	if (flag & F_48BIT)
 		CHOOSE_SIGNED(tmpbuff, (long)val, padd, flag);
 	if (flag & F_64BIT)
 		CHOOSE_SIGNED(tmpbuff, (long long)val, padd, flag);
+	if (flag & F_32BIT)
+		CHOOSE_SIGNED(tmpbuff, (int)val, padd, flag);
 	if (!(flag & F_NOERROR))
 		ft_exit("received int type without width flag !\n");
 	return (0);

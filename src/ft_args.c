@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 19:41:37 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 22:45:31 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/21 02:23:07 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	init_additional_flags(void)
 	g_additional_flags['U'] = F_UPPERCASE;
 	g_additional_flags['e'] = F_EXPONENT;
 	g_additional_flags['E'] = F_EXPONENT | F_UPPERCASE;
-	g_additional_flags['p'] = F_HEXA | F_LOWERCASE | F_64BIT;
+	g_additional_flags['p'] = F_PREFIX | F_HEXA | F_LOWERCASE | F_64BIT;
 }
 
 #include <stdio.h>

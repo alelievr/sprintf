@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:29:19 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 22:41:51 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/21 20:41:00 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ int		main(void) {
 	printf("olol %.5s !\n", "ABCDEFGH");
 	ft_printf("olol %hhx !\n", 4200);
 	printf("olol %hhx !\n", 4200);
-	/*ft_concat(buff, (unsigned long long)10, 5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
-	printf("%s\n", buff);
-	ft_concat(buff, 'c', 5, -30, 0);
+	ft_printf("olol %p !\n", 0x424242424242);
+	printf("olol %p !\n", 0x424242424242);
+	ft_printf("olol %i !\n", 1);
+	printf("olol %i !\n", 1);
+	ft_printf("olol %i !\n", 0);
+	printf("olol %i !\n", 0);
+	/*ft_concat(buff, (unsigned long long)424242424242, NOALIGN, -30, F_HEXA | F_64BIT | F_PREFIX);
+ 	printf("%s\n", buff);*/
+	/*ft_concat(buff, 'c', 5, -30, 0);
 	printf("%s\n", buff);
 	ft_concat(buff, (unsigned long long)-42, -5, -30, F_DECIMAL | F_32BIT | F_SIGNED);
 	printf("%s\n", buff);

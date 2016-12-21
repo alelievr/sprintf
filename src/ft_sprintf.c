@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 18:41:31 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 16:28:14 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/21 01:00:23 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,15 @@ int			ft_dprintf(int fd, const char *format, ...)
 	ret = printf_wrapper(format, &args, buff);
 	write(fd, buff, ret);
 	va_end(args);
+	return (ret);
+}
+
+int			ft_vprintf(const char *format, va_list *ap)
+{
+	char	buff[0xF000];
+	int		ret;
+	
+	ret = printf_wrapper(format, ap, buff);
+	write(1, buff, ret);
 	return (ret);
 }

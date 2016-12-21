@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 01:32:14 by alelievr          #+#    #+#             */
-/*   Updated: 2016/12/20 15:34:09 by alelievr         ###   ########.fr       */
+/*   Updated: 2016/12/21 20:43:31 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_uintlen_base(unsigned long long int val, const int flag)
 	size_t				ret;
 	unsigned long long	diviser;
 
+	if (val == 0)
+		return (1);
 	ret = 0;
 	diviser = GET_UNSIGNED_BASE_NUMBER(flag);
 	while (val && ++ret)
